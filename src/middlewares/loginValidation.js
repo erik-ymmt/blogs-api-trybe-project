@@ -16,12 +16,14 @@ const loginFieldsValidation = (user) => {
     email: Joi.string().email().required()
       .messages({
         'any.required': 'Some required fields are missing',
-        'string.email': 'Invalid fields',
+        'string.empty': 'Some required fields are missing',
+        'string.email': '"email" must be a valid email',
     }),
-    password: Joi.string().min(5).required()
+    password: Joi.string().min(6).required()
       .messages({
         'any.required': 'Some required fields are missing',
-        'string.min': 'Invalid fields',
+        'string.empty': 'Some required fields are missing',
+        'string.min': '"password" length must be at least 6 characters long',
     }),
   });
 
