@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         field: 'posts_id',
         references: {
-          model: 'blog_post',
+          model: 'blog_posts',
           key: 'id',
         },
         onUpdate: 'CASCADE',
