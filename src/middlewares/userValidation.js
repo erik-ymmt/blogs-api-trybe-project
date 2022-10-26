@@ -4,23 +4,20 @@ const getRegisteredUsers = require('../helpers/getRegisteredUsers');
 const fieldMissing = 'Some required fields are missing';
 
 const schema = Joi.object({
-  displayName: Joi.string().min(8).required()
-  .messages({
+  displayName: Joi.string().min(8).required().messages({
     'any.required': fieldMissing,
     'string.empty': fieldMissing,
     'string.min': '"displayName" length must be at least 8 characters long',
-}),
-  email: Joi.string().email().required()
-    .messages({
-      'any.required': fieldMissing,
-      'string.empty': fieldMissing,
-      'string.email': '"email" must be a valid email',
   }),
-  password: Joi.string().min(6).required()
-    .messages({
-      'any.required': fieldMissing,
-      'string.empty': fieldMissing,
-      'string.min': '"password" length must be at least 6 characters long',
+  email: Joi.string().email().required().messages({
+    'any.required': fieldMissing,
+    'string.empty': fieldMissing,
+    'string.email': '"email" must be a valid email',
+  }),
+  password: Joi.string().min(6).required().messages({
+    'any.required': fieldMissing,
+    'string.empty': fieldMissing,
+    'string.min': '"password" length must be at least 6 characters long',
   }),
   image: Joi.string(),
 });
