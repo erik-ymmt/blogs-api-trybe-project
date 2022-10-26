@@ -23,4 +23,10 @@ router.get(
   controller.posts.getPostById,
 );
 
+router.put(
+  '/:id',
+  middleware.authToken,
+  controller.posts.updatePost,
+);
+
 module.exports = router;
