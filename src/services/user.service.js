@@ -6,11 +6,20 @@ const createUser = async (user) => {
 };
 
 const getUsers = async () => {
-  const result = await User.findAll();
+  const result = await User.findAll({
+    attributes: { exclude: ['password'] } });
+  return result;
+};
+
+const getUserById = async (id) => {
+  const result = await User.findOne({
+    where: { id },
+    attributes: { exclude: ['password'] } });
   return result;
 };
 
 module.exports = {
   createUser,
   getUsers,
+  getUserById,
 };

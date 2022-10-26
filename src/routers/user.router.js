@@ -16,4 +16,10 @@ router.get(
   controller.user.getUsers,
 );
 
+router.get(
+  '/:id',
+  middleware.authToken,
+  controller.user.getUserById,
+);
+
 module.exports = router;
