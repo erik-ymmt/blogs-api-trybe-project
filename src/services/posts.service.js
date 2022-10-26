@@ -1,4 +1,4 @@
-const { BlogPost, User } = require('../models');
+const { BlogPost } = require('../models');
 
 const createBlogPost = async (post) => {
   const result = await BlogPost.create(post);
@@ -10,8 +10,8 @@ const createBlogPost = async (post) => {
 
 const getAllPosts = async () => {
   const results = await BlogPost.findAll({
-    include: { model: User, as: 'user', attributes: { exclude: ['password'] } },
-    // include: { all: true, attributes: { exclude: ['password'] } },
+    // include: { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    include: { all: true, attributes: { exclude: ['password'] } },
     attributes: { exclude: ['user_id'] },
   });
   return results;
@@ -20,14 +20,21 @@ const getAllPosts = async () => {
 const getPostById = async (id) => {
   const results = await BlogPost.findOne({ 
     where: { id },
-    include: { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    // include: { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    include: { all: true, attributes: { exclude: ['password', 'PostCategory'] } },
     attributes: { exclude: ['user_id'] },
   });
   return results;
 };
 
-const updatePost = async (id) => {
-  const results = await BlogPost.update({ where: { id } });
+const updatePost = async (id, updateData) => {
+  console.log('service', updateData);
+  await BlogPost.update(updateData, {
+    where: { id },
+  });
+
+  const results = await getPostById(id);
+
   return results;
 };
 

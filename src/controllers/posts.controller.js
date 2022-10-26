@@ -43,7 +43,12 @@ const getPostById = async (req, res) => {
 
 const updatePost = async (req, res) => {
   const id = Number(req.params.id);
-  const result = await services.post.updatePost(id);
+  const { title, content } = req.body;
+  const updated = new Date();
+  console.log('controller', updated);
+
+  const data = { title, content, updated };
+  const result = await services.posts.updatePost(id, data);
   res.status(200).json(result);
 };
 
