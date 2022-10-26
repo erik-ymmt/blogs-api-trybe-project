@@ -22,4 +22,10 @@ router.get(
   controller.user.getUserById,
 );
 
+router.delete(
+  '/:id',
+  middleware.authToken,
+  controller.user.deleteUser,
+);
+
 module.exports = router;
