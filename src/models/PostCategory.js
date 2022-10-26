@@ -1,6 +1,6 @@
 const PostCategoryModel = (sequelize, DataType) => {
   const PostCategory = sequelize.define(
-    "BlogPost",
+    "PostCategory",
     {
       postId: {
         type: DataType.INTEGER,

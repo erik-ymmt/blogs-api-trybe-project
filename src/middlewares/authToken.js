@@ -13,6 +13,8 @@ const tokenAuth = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, secret);
     const { emails } = await getRegisteredUsers();
+    req.email = decoded.email;
+
     if (!emails.includes(decoded.email)) {
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
