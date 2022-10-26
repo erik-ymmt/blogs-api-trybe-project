@@ -11,4 +11,10 @@ router.post(
   controller.categories.createCategory,
 );
 
+router.get(
+  '/',
+  middleware.authToken,
+  controller.categories.getCategories,
+);
+
 module.exports = router;
