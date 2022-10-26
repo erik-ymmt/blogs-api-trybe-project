@@ -1,3 +1,4 @@
+const getRegisteredPosts = require('../helpers/getRegisteredPosts');
 const identifyUserIdByEmail = require('../helpers/identifyUser');
 const services = require('../services');
 
@@ -23,6 +24,25 @@ const createBlogPost = async (req, res) => {
   res.status(201).json(result);
 };
 
+const getAllPosts = async (_req, res) => {
+  const results = await services.posts.getAllPosts();
+  res.status(200).json(results);
+};
+
+const getPostById = async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existentIds = await getRegisteredPosts();
+  if (!existentIds.includes(id)) {
+    return res.status(404).json({ message: 'Post does not exist' });
+  }
+
+  const result = await services.posts.getPostById(id);
+  res.status(200).json(result);
+};
+
 module.exports = {
   createBlogPost,
+  getAllPosts,
+  getPostById,
 };

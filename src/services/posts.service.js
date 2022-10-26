@@ -8,6 +8,18 @@ const createBlogPost = async (post) => {
   return postCreated;
 };
 
+const getAllPosts = async () => {
+  const results = await BlogPost.findAll();
+  return results;
+};
+
+const getPostById = async (id) => {
+  const results = await BlogPost.findOne({ where: { id } });
+  return results;
+};
+
 module.exports = {
   createBlogPost,
+  getAllPosts,
+  getPostById,
 };
