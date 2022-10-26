@@ -12,7 +12,7 @@ const schema = Joi.object({
     'any.required': fieldMissing,
     'string.empty': fieldMissing,
   }),
-  categoriesIds: Joi.array().min(1).required().messages({
+  categoryIds: Joi.array().min(1).required().messages({
     'any.required': fieldMissing,
     'string.empty': fieldMissing,
   }),
@@ -27,9 +27,9 @@ const postValidation = async (req, res, next) => {
   }
 
   const existentCategories = await getRegisteredCategories();
-  const { categoriesIds } = post;
-  const categoryVerification = categoriesIds
-    .every((category) => existentCategories.includes(category));
+  const { categoryIds } = post;
+  const categoryVerification = categoryIds
+    .every((category) => existentCategories.ids.includes(category));
 
   if (!categoryVerification) {
     return res.status(400).json({ message: 'one or more "categoryIds" not found' });

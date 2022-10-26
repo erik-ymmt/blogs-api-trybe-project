@@ -7,6 +7,7 @@ const router = express.Router();
 router.post(
   '/',
   middleware.authToken,
+  middleware.postValidation,
   controller.posts.createBlogPost,
 );
 
