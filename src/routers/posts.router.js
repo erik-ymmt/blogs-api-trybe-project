@@ -36,4 +36,10 @@ router.delete(
   controller.posts.deletePost,
 );
 
+// router.get(
+//   '/search?q',
+//   middleware.authToken,
+//   controller.posts.searchPost,
+// );
+
 module.exports = router;

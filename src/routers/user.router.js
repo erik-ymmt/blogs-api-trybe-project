@@ -23,7 +23,7 @@ router.get(
 );
 
 router.delete(
-  '/:id',
+  '/me',
   middleware.authToken,
   controller.user.deleteUser,
 );

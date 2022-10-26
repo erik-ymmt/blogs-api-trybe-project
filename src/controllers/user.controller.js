@@ -1,5 +1,6 @@
 const services = require('../services');
 const generateToken = require('../helpers/generateToken');
+const identifyUserIdByEmail = require('../helpers/identifyUser');
 
 const createUser = async (req, res) => {
   const user = req.body;
@@ -27,7 +28,7 @@ const getUserById = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  const id = Number(req.params.id);
+  const id = await identifyUserIdByEmail(req.email);
   await services.user.deleteUser(id);
   res.status(204).end();
 };
