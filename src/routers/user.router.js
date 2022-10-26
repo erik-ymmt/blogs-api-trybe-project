@@ -10,4 +10,10 @@ router.post(
   controller.user.createUser,
 );
 
+router.get(
+  '/',
+  middleware.authToken,
+  controller.user.getUsers,
+);
+
 module.exports = router;

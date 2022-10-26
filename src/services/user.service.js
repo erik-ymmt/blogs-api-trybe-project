@@ -5,6 +5,12 @@ const createUser = async (user) => {
   return dataValues;
 };
 
+const getUsers = async () => {
+  const result = await User.findAll();
+  return result;
+};
+
 module.exports = {
   createUser,
+  getUsers,
 };
