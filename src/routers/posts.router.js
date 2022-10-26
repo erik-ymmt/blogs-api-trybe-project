@@ -4,6 +4,12 @@ const middleware = require('../middlewares');
 
 const router = express.Router();
 
+router.get(
+  '/search',
+  middleware.authToken,
+  controller.posts.searchPost,
+);
+
 router.post(
   '/',
   middleware.authToken,
@@ -35,11 +41,5 @@ router.delete(
   middleware.authToken,
   controller.posts.deletePost,
 );
-
-// router.get(
-//   '/search?q',
-//   middleware.authToken,
-//   controller.posts.searchPost,
-// );
 
 module.exports = router;
