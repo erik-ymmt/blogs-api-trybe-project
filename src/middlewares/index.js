@@ -2,6 +2,7 @@ const loginValidation = require('./loginValidation');
 const userValidation = require('./userValidation');
 const categoryValidation = require('./categoryValidation');
 const postValidation = require('./postValidation');
+const updatePostValidation = require('./updatePostValidation');
 const authToken = require('./authToken');
 
 module.exports = {
@@ -9,5 +10,6 @@ module.exports = {
   userValidation,
   categoryValidation,
   postValidation,
+  updatePostValidation,
   authToken,
 };

@@ -26,6 +26,7 @@ router.get(
 router.put(
   '/:id',
   middleware.authToken,
+  middleware.updatePostValidation,
   controller.posts.updatePost,
 );
 

@@ -28,7 +28,6 @@ const getPostById = async (id) => {
 };
 
 const updatePost = async (id, updateData) => {
-  console.log('service', updateData);
   await BlogPost.update(updateData, {
     where: { id },
   });
