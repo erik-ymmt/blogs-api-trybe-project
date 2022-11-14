@@ -2,12 +2,12 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Blogs API",
-    "description": "This project developed a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/). Here you can try all CRUD operations on the Blogs API! Check the [Blog API's Github repository](https://github.com/erik-ymmt/blogs-api-trybe-project) for more details!",
+    "description": "This project developed a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/). Here you can try all CRUD operations on the Blogs API! Check the [Blog API's Github repository](https://github.com/erik-ymmt/blogs-api-trybe-project) for more details! - How to test protected endpoints: 1. Login with a valid user (such as the example one) trying out the /login route and executing it; 2. Copy the token on the response body, 3. Paste it on authorize and press authorize. Done!",
     "version": "1.0.0"
   },
-  "servers":[
+  "servers": [
     {
-      "url": "https://localhost:3000",
+      "url": "http://localhost:3000",
       "description": "Local server"
     }
   ],
@@ -22,13 +22,17 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/login"
+              },
+              "example": {
+                "email": "lewishamilton@gmail.com",
+                "password": "123456"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Created",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -39,33 +43,14 @@
           },
           "400": {
             "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/user": {
-      "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
-        "summary": "Find all users",
-        "tags": ["Users"],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/users"
-                }
-              }
-            }
           },
           "401": {
             "description": "Unauthorized"
           }
         }
-      },
+      }
+    },
+    "/user": {
       "post": {
         "summary": "Add new user",
         "description": "Create a new user with the input data",
@@ -77,12 +62,10 @@
                 "$ref": "#/components/schemas/newUser"
               },
               "example": {
-                "createUser": {
-                  "displayName": "maria silva",
-                  "email": "maria@exemplo.com",
-                  "password": "123456",
-                  "image": "https://cdn-icons-png.flaticon.com/512/7506/7506581.png"
-                }
+                "displayName": "maria silva",
+                "email": "maria@exemplo.com",
+                "password": "123456",
+                "image": "https://cdn-icons-png.flaticon.com/512/7506/7506581.png"
               }
             }
           }
@@ -105,13 +88,39 @@
             "description": "Conflict"
           }
         }
+      },
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find all users",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/users"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
     },
     "/user/{id}": {
       "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Find user by ID",
         "description": "Returns user based on ID",
         "tags": ["Users"],
@@ -122,7 +131,7 @@
             "description": "user ID",
             "required": true
           }
-        ], 
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -145,9 +154,11 @@
     },
     "/user/me": {
       "delete": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Delete user",
         "description": "Delete logged user",
         "tags": ["Users"],
@@ -162,33 +173,12 @@
       }
     },
     "/categories": {
-      "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
-        "summary": "Find all categories",
-        "description": "Returns all categories",
-        "tags": ["Categories"],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/categories"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      },
       "post": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Add new category",
         "description": "Create a new category with the input data",
         "tags": ["Categories"],
@@ -197,6 +187,9 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/newCategory"
+              },
+              "example": {
+                "name": "Cars"
               }
             }
           }
@@ -219,23 +212,23 @@
             "description": "Unauthorized"
           }
         }
-      }
-    },
-    "/post": {
+      },
       "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
-        "summary": "Find all posts",
-        "description": "Returns all posts",
-        "tags": ["Posts"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find all categories",
+        "description": "Returns all categories",
+        "tags": ["Categories"],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts"
+                  "$ref": "#/components/schemas/categories"
                 }
               }
             }
@@ -244,11 +237,15 @@
             "description": "Unauthorized"
           }
         }
-      },
+      }
+    },
+    "/post": {
       "post": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Add new post",
         "description": "Create a new post with the input data",
         "tags": ["Posts"],
@@ -257,6 +254,11 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/newPost"
+              },
+              "example": {
+                "title": "Blog Title!",
+                "content": "The whole text for the blog post goes here in this key",
+                "categoryIds": [1, 2]
               }
             }
           }
@@ -279,13 +281,40 @@
             "description": "Unauthorized"
           }
         }
+      },
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find all posts",
+        "description": "Returns all posts",
+        "tags": ["Posts"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/posts"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
     },
     "/post/{id}": {
       "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Find post by ID",
         "description": "Returns post based on ID",
         "tags": ["Posts"],
@@ -296,7 +325,7 @@
             "description": "post ID",
             "required": true
           }
-        ], 
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -317,9 +346,11 @@
         }
       },
       "put": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Update post",
         "description": "Update post with the selected ID",
         "tags": ["Posts"],
@@ -336,6 +367,10 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/updatePost"
+              },
+              "example": {
+                "title": "Blog Title Edited!",
+                "content": "The edited text goes right here too!"
               }
             }
           }
@@ -360,9 +395,11 @@
         }
       },
       "delete": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Delete post",
         "description": "Delete post with the selected ID",
         "tags": ["Posts"],
@@ -389,9 +426,11 @@
     },
     "/post/search": {
       "get": {
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "summary": "Find posts by search term",
         "description": "Returns posts whose title or content contains the search term",
         "tags": ["Posts"],
@@ -401,7 +440,7 @@
             "in": "query",
             "description": "search term for post"
           }
-        ], 
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -423,7 +462,7 @@
   "tags": [
     {
       "name": "Login",
-      "description": "Login endpoints"
+      "description": "Login endpoints, start here to generate a token."
     },
     {
       "name": "Users",
@@ -447,6 +486,22 @@
             "type": "string"
           },
           "password": {
+            "type": "string"
+          }
+        }
+      },
+      "token": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "email": {
+        "type": "object",
+        "properties": {
+          "email": {
             "type": "string"
           }
         }
@@ -500,14 +555,6 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
-          }
-        }
-      },
-      "token": {
-        "type": "object",
-        "properties": {
-          "token": {
             "type": "string"
           }
         }

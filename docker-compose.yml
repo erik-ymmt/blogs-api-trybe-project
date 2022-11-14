@@ -18,7 +18,7 @@ services:
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_HOST: d
+      MYSQL_HOST: db
       JWT_SECRET: secretJWT
       API_HOST: "node"
       API_PORT: 3000
@@ -28,7 +28,7 @@ services:
   db:
     container_name: blogs_api_db
     image: mysql:8.0.23
-    platform: linux/x86_64
+    # platform: linux/x86_64
     restart: always
     ports:
       - 3306:3306
