@@ -1,7 +1,7 @@
 ## Blogs API Project
 
 ## About
-&nbsp;&nbsp;  This project developed a RESTful CRUD API with the Models, Services, and Controller(MSC) architecture. The API simulates a blog with posts. The database was created with MySQL. The concept of the project was made by [Trybe](https://www.betrybe.com/).
+&nbsp;&nbsp; This project developed a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/).
 	
 ## Files:
 &nbsp;&nbsp; Files developed by me:
