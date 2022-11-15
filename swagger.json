@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Blogs API",
-    "description": "This project developed a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/). Here you can try all CRUD operations on the Blogs API! Check the [Blog API's Github repository](https://github.com/erik-ymmt/blogs-api-trybe-project) for more details! - How to test protected endpoints: 1. Login with a valid user (such as the example one) trying out the /login route and executing it; 2. Copy the token on the response body, 3. Paste it on authorize and press authorize. Done!",
+    "description": "This project is a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/). Here you can try all CRUD operations! Check the [Blog API's Github repository](https://github.com/erik-ymmt/blogs-api-trybe-project) for more details! -- How to test protected endpoints: 1. Login with a valid user (such as the example one) trying out the /login route and executing it; 2. Copy the token on the response body, 3. Paste it on authorize and press authorize. Done!",
     "version": "1.0.0"
   },
   "servers": [
