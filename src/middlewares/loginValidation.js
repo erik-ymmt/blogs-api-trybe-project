@@ -34,7 +34,7 @@ const loginValidation = async (req, res, next) => {
   const { passwords, emails } = await getRegisteredUsers();
 
   if (!passwords.includes(password) || !emails.includes(email)) {
-    return res.status(400).json({ message: 'Invalid fields' });
+    return res.status(401).json({ message: 'Invalid fields' });
   }
 
   return next();
