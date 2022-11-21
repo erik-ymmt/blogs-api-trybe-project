@@ -1,9 +1,10 @@
 ## Blogs API Project
 
-[Deploy link (Swagger Documentation)](http://ec2-18-228-39-56.sa-east-1.compute.amazonaws.com:3000/documentation/)
-
 ## About
 &nbsp;&nbsp; This project is a RESTful API for a blog. It was implemented with Models, Services, and Controller(MSC) architecture, using MySQL for database. Its concept was made by [Trybe](https://www.betrybe.com/). For deployment I used AWS and documented it with Swagger.
+
+[Deploy link (Swagger Documentation)](http://ec2-18-228-39-56.sa-east-1.compute.amazonaws.com:3000/documentation/)
+![p_be_blogs-min](https://user-images.githubusercontent.com/92269952/203141067-e69e9509-dcdf-414e-8433-6f4b2f92d08f.png)
 	
 ## Files:
 &nbsp;&nbsp; Project's base was developed by Trybe (Dockerfile, package.json, docker-compose.yml and other configurations). Files developed by me:
